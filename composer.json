@@ -1,0 +1,50 @@
+{
+    "name": "comento/laravel-sens-alimtalk",
+    "description": "Send alimtalk message, which is one of the KakaoTalk Biz Messages from ncloud.",
+    "homepage": "https://github.com/comento/laravel-sens-alimtalk",
+    "keywords": [
+        "laravel",
+        "ncloud",
+        "alimtalk"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "comento",
+            "email": "tech@comento.kr"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^6.0",
+        "illuminate/notifications": "~5.8|^6.0|^7.0",
+        "illuminate/support": "~5.8|^6.0|^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Comento\\SensAlimtalk\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Comento\\SensAlimtalk\\Test\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Comento\\SensAlimtalk\\SensAlimtalkServiceProvider"
+            ]
+        }
+    }
+}
