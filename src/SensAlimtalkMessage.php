@@ -3,6 +3,7 @@
 
 namespace Comento\SensAlimtalk;
 
+use Illuminate\Support\Carbon;
 
 class SensAlimtalkMessage
 {
@@ -67,6 +68,10 @@ class SensAlimtalkMessage
         return $this;
     }
 
+    /**
+     * @param $button
+     * @return $this
+     */
     public function button($button) {
         $this->buttons[] = $button;
 
