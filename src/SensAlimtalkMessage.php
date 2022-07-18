@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Comento\SensAlimtalk;
 
 use Illuminate\Support\Carbon;
