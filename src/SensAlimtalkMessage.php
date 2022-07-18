@@ -162,6 +162,13 @@ class SensAlimtalkMessage
         }
     }
 
+    public function setPlusFriendId($selectPlusFriendId)
+    {
+        $this->plusFriendId = $selectPlusFriendId;
+
+        return $this;
+    }
+
     public function toArray(): array
     {
         if (!is_array($this->to)) {
