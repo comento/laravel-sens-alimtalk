@@ -92,7 +92,6 @@ class MentoringAdopt extends Notification
     public function toSensAlimtalk($notifiable)
     {
         return (new SensAlimtalkMessage())
-            ->setPlusFriendId('Insert Your custom plus friend id.')
             ->templateCode('adopt')
             ->to($this->mobiles)
             ->content('축하합니다!
