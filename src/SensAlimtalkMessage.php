@@ -14,11 +14,8 @@ class SensAlimtalkMessage
     public $buttons;
     public $failoverConfigContent;
     public $reserveTime;
-
     public $variables;
-
     public $utmSource;
-
     public $custom_pattern = '/#{\w.+}/';
 
     /**
@@ -34,7 +31,7 @@ class SensAlimtalkMessage
      * @param $templateCode
      * @return $this
      */
-    public function templateCode($templateCode)
+    public function templateCode($templateCode): SensAlimtalkMessage
     {
         $this->templateCode = $templateCode;
 
@@ -45,7 +42,7 @@ class SensAlimtalkMessage
      * @param $to
      * @return $this
      */
-    public function to($to)
+    public function to($to): SensAlimtalkMessage
     {
         $this->to = $to;
 
@@ -56,7 +53,7 @@ class SensAlimtalkMessage
      * @param $content
      * @return $this
      */
-    public function content($content)
+    public function content($content): SensAlimtalkMessage
     {
         $this->content = $content;
 
@@ -67,7 +64,7 @@ class SensAlimtalkMessage
      * @param $linkMobile
      * @return $this
      */
-    public function linkMobile($linkMobile)
+    public function linkMobile($linkMobile): SensAlimtalkMessage
     {
         $this->linkMobile = $linkMobile;
 
@@ -78,7 +75,7 @@ class SensAlimtalkMessage
      * @param $button
      * @return $this
      */
-    public function button($button)
+    public function button($button): SensAlimtalkMessage
     {
         $this->buttons[] = $button;
 
@@ -89,7 +86,7 @@ class SensAlimtalkMessage
      * @param $linkPc
      * @return $this
      */
-    public function linkPc($linkPc)
+    public function linkPc($linkPc): SensAlimtalkMessage
     {
         $this->linkPc = $linkPc;
 
@@ -103,7 +100,7 @@ class SensAlimtalkMessage
      * @param $reserveTime
      * @return $this
      */
-    public function reserveTime($reserveTime)
+    public function reserveTime($reserveTime): SensAlimtalkMessage
     {
         $this->reserveTime = $reserveTime;
 
@@ -115,7 +112,7 @@ class SensAlimtalkMessage
      * @return $this
      * @throws \Exception
      */
-    public function reserveAfterMinute($minutes)
+    public function reserveAfterMinute($minutes): SensAlimtalkMessage
     {
         if ($minutes <= 10) {
             throw new \Exception('SensAlimtalkMessage error: Reservation cannot be requested within 10 minutes.');
@@ -128,7 +125,12 @@ class SensAlimtalkMessage
         return $this;
     }
 
-    public function reserveAfterDay($days)
+    /**
+     * @param $days
+     * @return $this
+     * @throws \Exception
+     */
+    public function reserveAfterDay($days): SensAlimtalkMessage
     {
         if ($days > 180) {
             throw new \Exception('SensAlimtalkMessage error: Reservations can be made in up to 180 days.');
@@ -139,20 +141,32 @@ class SensAlimtalkMessage
         return $this;
     }
 
-    public function variables($variables)
+    /**
+     * @param $variables
+     * @return $this
+     */
+    public function variables($variables): SensAlimtalkMessage
     {
         $this->variables = $variables;
 
         return $this;
     }
 
-    public function utmSource($utmSource)
+    /**
+     * @param $utmSource
+     * @return $this
+     */
+    public function utmSource($utmSource): SensAlimtalkMessage
     {
         $this->utmSource = $utmSource;
 
         return $this;
     }
 
+    /**
+     * @param $check_text
+     * @return void
+     */
     public function setVariables(&$check_text)
     {
         foreach ($this->variables as $key => $value) {
@@ -162,6 +176,20 @@ class SensAlimtalkMessage
         }
     }
 
+    /**
+     * @param $selectPlusFriendId
+     * @return $this
+     */
+    public function setPlusFriendId($selectPlusFriendId): SensAlimtalkMessage
+    {
+        $this->plusFriendId = $selectPlusFriendId;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
         if (!is_array($this->to)) {
