@@ -114,6 +114,7 @@ class MentoringAdopt extends Notification
 * `reserveAfterDay(int)`
 * `variables(array)`
 * `utmSource(string)`
+* `setPlusFriendId(string)`
 
 ## Changelog
 
