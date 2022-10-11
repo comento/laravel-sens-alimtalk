@@ -25,6 +25,7 @@ class SensAlimtalkMessage
     public function __construct()
     {
         $this->plusFriendId = config('sens-alimtalk.plus_friend_id');
+        $this->countryCode = '+82';
         $this->messages = [];
     }
 
@@ -128,8 +129,10 @@ class SensAlimtalkMessage
     {
         if ($minutes <= 10) {
             throw new \Exception('SensAlimtalkMessage error: Reservation cannot be requested within 10 minutes.');
-        } else if ($minutes > 60 * 24 * 180) {
-            throw new \Exception('SensAlimtalkMessage error: Reservations can be made in up to 180 days.');
+        } else {
+            if ($minutes > 60 * 24 * 180) {
+                throw new \Exception('SensAlimtalkMessage error: Reservations can be made in up to 180 days.');
+            }
         }
 
         $this->reserveTime = Carbon::now()->addMinutes($minutes)->isoFormat('YYYY-MM-DD HH:mm');
