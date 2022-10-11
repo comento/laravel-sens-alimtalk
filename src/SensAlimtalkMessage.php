@@ -14,6 +14,7 @@ class SensAlimtalkMessage
     public $buttons;
     public $failoverConfigContent;
     public $reserveTime;
+    public $countryCode;
     public $variables;
     public $utmSource;
     public $custom_pattern = '/#{\w.+}/';
@@ -103,6 +104,17 @@ class SensAlimtalkMessage
     public function reserveTime($reserveTime): SensAlimtalkMessage
     {
         $this->reserveTime = $reserveTime;
+
+        return $this;
+    }
+
+    /**
+     * @param string $countryCode
+     * @return $this
+     */
+    public function countryCode(string $countryCode = '+82'): SensAlimtalkMessage
+    {
+        $this->countryCode = $countryCode;
 
         return $this;
     }
@@ -222,6 +234,7 @@ class SensAlimtalkMessage
                 "to" => $t,
                 "content" => $this->content,
                 "buttons" => $this->buttons,
+                "countryCode" => $this->countryCode,
                 "failoverConfig" => [
                     "content" => $this->failoverConfigContent ??
                         $this->content . "\n\n" . ($this->buttons[0]['linkMobile'] ?? '')
