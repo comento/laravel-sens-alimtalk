@@ -112,6 +112,7 @@ class MentoringAdopt extends Notification
 * `reserveTime(string)`
 * `reserveAfterMinute(int)`
 * `reserveAfterDay(int)`
+* `countryCode(string)`
 * `variables(array)`
 * `utmSource(string)`
 * `setPlusFriendId(string)`

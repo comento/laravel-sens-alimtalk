@@ -2,6 +2,14 @@
 
 All Notable changes to `sens-alimtalk` will be documented in this file
 
+## 4.1.0 - 2022-10-12
+
+- Add `countryCode()` method
+
+## 4.0.0 - 2022-10-11
+
+- Support Laravel 9
+
 ## 3.0.0 - 2021-04-15
 
 - Support PHP8
