@@ -14,6 +14,7 @@ class SensAlimtalkMessage
     public $buttons;
     public $failoverConfigContent;
     public $reserveTime;
+    public $countryCode;
     public $variables;
     public $utmSource;
     public $custom_pattern = '/#{\w.+}/';
@@ -24,6 +25,7 @@ class SensAlimtalkMessage
     public function __construct()
     {
         $this->plusFriendId = config('sens-alimtalk.plus_friend_id');
+        $this->countryCode = '+82';
         $this->messages = [];
     }
 
@@ -108,6 +110,17 @@ class SensAlimtalkMessage
     }
 
     /**
+     * @param string $countryCode
+     * @return $this
+     */
+    public function countryCode(string $countryCode = '+82'): SensAlimtalkMessage
+    {
+        $this->countryCode = $countryCode;
+
+        return $this;
+    }
+
+    /**
      * @param $minutes
      * @return $this
      * @throws \Exception
@@ -116,7 +129,7 @@ class SensAlimtalkMessage
     {
         if ($minutes <= 10) {
             throw new \Exception('SensAlimtalkMessage error: Reservation cannot be requested within 10 minutes.');
-        } else if ($minutes > 60 * 24 * 180) {
+        } elseif ($minutes > 60 * 24 * 180) {
             throw new \Exception('SensAlimtalkMessage error: Reservations can be made in up to 180 days.');
         }
 
@@ -222,6 +235,7 @@ class SensAlimtalkMessage
                 "to" => $t,
                 "content" => $this->content,
                 "buttons" => $this->buttons,
+                "countryCode" => $this->countryCode,
                 "failoverConfig" => [
                     "content" => $this->failoverConfigContent ??
                         $this->content . "\n\n" . ($this->buttons[0]['linkMobile'] ?? '')
