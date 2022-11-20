@@ -34,7 +34,14 @@ class SensAlimtalkChannel
      */
     public function send($notifiable, Notification $notification)
     {
+        /**
+         * @var SensAlimtalkMessage $message
+         */
         $message = $notification->toSensAlimtalk($notifiable);
+
+        if (!$message->to) {
+            $message->to($notifiable->routeNotificationFor('sens_alimtalk', $notification));
+        }
 
         try {
             $response = $this->sensAlimtalk->send($message->toArray());
