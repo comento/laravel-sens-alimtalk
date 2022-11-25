@@ -2,6 +2,10 @@
 
 All Notable changes to `sens-alimtalk` will be documented in this file
 
+## 4.2.0 - 2022-11-25
+
+- You can use `routeNotificationForSensAlimtalk` method on the notifiable entity
+
 ## 4.1.0 - 2022-10-12
 
 - Add `countryCode()` method
