@@ -39,10 +39,8 @@ class SensAlimtalkChannel
          */
         $message = $notification->toSensAlimtalk($notifiable);
 
-        if (! collect($notifiable)->isEmpty()) {
-            if (! $message->to) {
-                $message->to($notifiable->routeNotificationFor('sens_alimtalk', $notification));
-            }
+        if (collect($notifiable)->isNotEmpty() && collect($message->to)->isEmpty()) {
+            $message->to($notifiable->routeNotificationFor('sens_alimtalk', $notification));
         }
 
         try {
