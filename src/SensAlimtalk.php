@@ -42,8 +42,8 @@ class SensAlimtalk
         $buffer[] = strtoupper($this->method) . ' ' . $this->targetURL;
         $buffer[] = $this->timestamp;
         $buffer[] = $this->accessKey;
-        $secretKey = utf8_encode($this->secretKey);
-        $message = utf8_encode(implode("\n", $buffer));
+        $secretKey = mb_convert_encoding($this->secretKey, 'UTF-8', mb_list_encodings());
+        $message = mb_convert_encoding(implode("\n", $buffer), 'UTF-8', mb_list_encodings());
         $hash = hex2bin(hash_hmac('sha256', $message, $secretKey));
 
         return base64_encode($hash);
