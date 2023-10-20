@@ -5,6 +5,7 @@ namespace Comento\SensAlimtalk;
 
 
 use GuzzleHttp\Client;
+use Psr\Http\Message\ResponseInterface;
 
 class SensAlimtalk
 {
@@ -13,7 +14,7 @@ class SensAlimtalk
     private $baseURL;
     private $targetURL;
     private $method = 'POST';
-    private $timestamp;
+    private $timestamp = '';
 
     /**
      * SensAlimtalk constructor.
@@ -25,7 +26,6 @@ class SensAlimtalk
     public function __construct($accessKey, $secretKey, $serviceId)
     {
         $this->baseURL = 'https://sens.apigw.ntruss.com';
-        $this->timestamp = (string)(int)round(microtime(true) * 1000);
         $this->accessKey = $accessKey;
         $this->secretKey = $secretKey;
         $this->targetURL = '/alimtalk/v2/services/' . $serviceId . '/messages';
@@ -64,11 +64,13 @@ class SensAlimtalk
 
     /**
      * @param $body
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
      */
     public function send($body)
     {
         $client = $this->setClient();
+
+        $this->timestamp = (string)(int)round(microtime(true) * 1000);
 
         return $client->request(
             $this->method,
