@@ -18,6 +18,7 @@ class SensAlimtalkMessage
     public $variables;
     public $utmSource;
     public $custom_pattern = '/#{\w.+}/';
+    public $messages = [];
 
     /**
      * SensAlimtalkMessage constructor.
@@ -26,7 +27,6 @@ class SensAlimtalkMessage
     {
         $this->plusFriendId = config('sens-alimtalk.plus_friend_id');
         $this->countryCode = '+82';
-        $this->messages = [];
     }
 
     /**
