@@ -27,7 +27,7 @@ class SensAlimtalkMessage
     public function __construct()
     {
         $this->plusFriendId = config('sens-alimtalk.plus_friend_id');
-        $this->useSmsFailover = config('sens-alimtalk.use_sms_failover');
+        $this->useSmsFailover = config('sens-alimtalk.use_sms_failover') ?? true;
         $this->countryCode = '+82';
     }
 
