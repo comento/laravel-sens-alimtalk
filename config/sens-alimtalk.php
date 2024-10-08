@@ -22,4 +22,9 @@ return [
      * KakaoTalk Channel ID ((Old) Plus Friend ID)
      */
     'plus_friend_id' => '',
+
+    /*
+     * SMS Failover use status
+     */
+    'use_sms_failover' => true,
 ];

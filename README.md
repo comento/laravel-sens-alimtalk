@@ -60,6 +60,11 @@ Set your key and defaults in `config/sens-alimtalk.php`:
  * KakaoTalk Channel ID ((Old) Plus Friend ID)
  */
 'plus_friend_id' => '',
+
+/*
+ * SMS Failover use status
+ */
+'use_sms_failover' => true,
 ```
 
 ## Usage
@@ -109,6 +114,7 @@ class MentoringAdopt extends Notification
 * `to(string|array)`
 * `content(string)`
 * `button(array)`
+* `useSmsFailover(boolean)`
 * `reserveTime(string)`
 * `reserveAfterMinute(int)`
 * `reserveAfterDay(int)`

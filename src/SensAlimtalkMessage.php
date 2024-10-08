@@ -12,6 +12,7 @@ class SensAlimtalkMessage
     public $to;
     public $content;
     public $buttons;
+    public $useSmsFailover;
     public $failoverConfigContent;
     public $reserveTime;
     public $countryCode;
@@ -26,6 +27,7 @@ class SensAlimtalkMessage
     public function __construct()
     {
         $this->plusFriendId = config('sens-alimtalk.plus_friend_id');
+        $this->useSmsFailover = config('sens-alimtalk.use_sms_failover');
         $this->countryCode = '+82';
     }
 
@@ -80,6 +82,17 @@ class SensAlimtalkMessage
     public function button($button): SensAlimtalkMessage
     {
         $this->buttons[] = $button;
+
+        return $this;
+    }
+
+    /**
+     * @param $useSmsFailover
+     * @return $this
+     */
+    public function useSmsFailover($useSmsFailover): SensAlimtalkMessage
+    {
+        $this->useSmsFailover = $useSmsFailover;
 
         return $this;
     }
@@ -236,6 +249,7 @@ class SensAlimtalkMessage
                 "content" => $this->content,
                 "buttons" => $this->buttons,
                 "countryCode" => $this->countryCode,
+                "useSmsFailover" => $this->useSmsFailover,
                 "failoverConfig" => [
                     "content" => $this->failoverConfigContent ??
                         $this->content . "\n\n" . ($this->buttons[0]['linkMobile'] ?? '')
