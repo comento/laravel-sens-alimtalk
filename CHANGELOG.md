@@ -2,7 +2,7 @@
 
 All Notable changes to `sens-alimtalk` will be documented in this file
 
-## 8.0.0 - unreleased
+## 8.0.0 - 2026-09-22
 
 ### Added
 
