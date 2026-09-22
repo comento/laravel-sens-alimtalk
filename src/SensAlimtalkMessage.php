@@ -11,6 +11,8 @@ class SensAlimtalkMessage
     public $templateCode;
     public $to;
     public $content;
+    public $linkMobile;
+    public $linkPc;
     public $buttons;
     public $useSmsFailover;
     public $failoverConfigContent;
